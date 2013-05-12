@@ -1,7 +1,7 @@
 exports.index = function(req, res){
-    res.render('chat', {title: 'Welcome to this talk'});
+  var isSpeaker = req.query.is_speaker === 'true';
+  res.render('chat', {title: 'Welcome to this talk', isSpeaker: isSpeaker});
 };
-
 
 var users = {};
 
@@ -18,12 +18,15 @@ exports.handleConnection = function (socket) {
       username: username,
       socket: socket
     };
-    //console.log('User registered ' + data.username);
     socket.broadcast.emit('notify', { message: message('connected') });
   });
 
   socket.on('message', function (data) {
     socket.broadcast.emit('notify', { message: message(data.message) });
+  });
+
+  socket.on('setPage', function(data) {
+    socket.broadcast.emit('setPage', {pageNum: data.pageNum});
   });
 
   socket.on('disconnect', function (data) {
