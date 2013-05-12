@@ -27,3 +27,10 @@ app.get('/chat', chat.index);
 
 
 console.log("Express server listening on port 3000");
+
+
+io.sockets.on('connection', function (socket) {
+  socket.on('register', function (data) {
+    console.log('User registered ' + data.username);
+  });
+});

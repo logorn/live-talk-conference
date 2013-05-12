@@ -1,8 +1,11 @@
 extends layout
 
 block content
-  h1= 'Welcome to this chatroom'
+    h1= 'Welcome to this chatroom'
 
-  form
-    input#user-name(type='text')
-    a#submit-name(href='#') Enter room
+    form#userForm
+        input#username(type='text')
+        a#submitName(href='#') Enter room
+
+    div#chatContainer(style='display: none')
+        p Chat contents
