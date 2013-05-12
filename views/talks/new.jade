@@ -4,14 +4,28 @@ block variables
 extends ../layout
 
 block content
-  form(method = "Post", url="/talks")
+  form(method = "Post", action="/talks")
     fieldset
       legend New talk
       p
         label(for="talk[name]") name
-        input(type="text", name="talk[name]")
+        input(type="text", name="name")
+        - if (errors && errors.name)
+          p #{errors.name.message}
       p
-        label(for="talk[url]") URL
-        input(type="text", name="talk[url]")
+        label(for="talk[name]") spealer
+        input(type="text", name="speaker")
+        - if (errors && errors.speaker)
+          p #{errors.speaker.message}
+      p
+        label(for="talk[name]") url
+        input(type="text", name="url")
+        - if (errors && errors.url)
+          p #{errors.url.message}
+      p
+        label(for="talk[url]") description
+        input(type="text", name="description")
+        - if (errors && errors.description)
+          p #{errors.url.message}
       p.buttons
         input(type="submit", value="Save")

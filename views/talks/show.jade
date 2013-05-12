@@ -1,0 +1,11 @@
+block variables
+  - var title = "New Talk"
+
+extends ../layout
+
+block content
+  p Entra a la charla #{talk.name} de #{talk.speaker}
+  p Entra con el link
+    a(href="/talks/#{talk.uuid}") Este es el link
+  p O entra con el QR
+  img(src='https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=#{config.baseUrl}/talks/#{talk.uuid}')

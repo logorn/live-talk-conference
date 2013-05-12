@@ -30,7 +30,8 @@ module.exports = function (app, config) {
   app.use(i18n.init);
   console.log(i18n.getCatalog());
   app.locals({
-    __: i18n.__
+    __: i18n.__,
+    config: config
   });
 
   // development only
