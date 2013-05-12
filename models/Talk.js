@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
   , uuid = require('node-uuid')
   , massAssign = require('mongoose-mass-assign');
 
-var lengthValidator = validate('len', 3, 15);
+var lengthValidator = validate('len', 3, 100);
 
 var TalkSchema = new Schema({
   name: {
