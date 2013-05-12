@@ -1,31 +1,23 @@
+
+/**
+ * Module dependencies.
+ */
+
 var express = require('express')
-  , routes = require('./routes')
-  , chat = require('./routes/chat')
-  , http = require('http');
+  , Resource = require('express-resource')
+  , http = require('http')
+  , socketio = require('socket.io')
+  , chat = require('./routes/chat');
 
+
+// express settings
 var app = express();
-var server = app.listen(3000);
-var io = require('socket.io').listen(server);
+var config = require('./config/config')[app.get('env')];
+require('./config/express')(app, config);
+require('./config/routes')(app, config);
 
-app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(express.static(__dirname + '/public'));
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
+var server = app.listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
 });
-
-app.configure('development', function(){
-  app.use(express.errorHandler());
-});
-
-app.get('/', routes.index);
-app.get('/chat', chat.index);
-
-
-console.log("Express server listening on port 3000");
-
+var io = socketio.listen(server);
 io.sockets.on('connection', chat.handleConnection);

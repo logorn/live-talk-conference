@@ -1,5 +1,5 @@
 
 
-exports.index = function(req, res){
-  res.send('talk index');
+exports.new = function(req, res){
+  res.render("talks/new")
 };

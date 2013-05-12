@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log('aa');
     var socket = io.connect('http://localhost'),
         username = $('#username')[0],
         submitName = $('#submitName'),

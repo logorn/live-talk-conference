@@ -1,0 +1,11 @@
+block variables
+  - var title = "New Talk"
+
+extends ../layout
+
+block content
+  form(method = "Post")
+    fieldset
+      legend __("talk.new")
+      p
+        label(for="talk[name]") Talk name
