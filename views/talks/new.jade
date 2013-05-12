@@ -9,22 +9,22 @@ block content
       legend New talk
       p
         label(for="talk[name]") name
-        input(type="text", name="name")
+        input(type="text", name="name", value="#{talk ? talk.name : ''}")
         - if (errors && errors.name)
           p #{errors.name.message}
       p
         label(for="talk[name]") spealer
-        input(type="text", name="speaker")
+        input(type="text", name="speaker", value="#{talk ? talk.speaker : ''}")
         - if (errors && errors.speaker)
           p #{errors.speaker.message}
       p
         label(for="talk[name]") url
-        input(type="text", name="url")
+        input(type="text", name="url", value="#{talk ? talk.url : ''}")
         - if (errors && errors.url)
           p #{errors.url.message}
       p
         label(for="talk[url]") description
-        input(type="text", name="description")
+        input(type="text", name="description", value="#{talk ? talk.description : ''}")
         - if (errors && errors.description)
           p #{errors.url.message}
       p.buttons

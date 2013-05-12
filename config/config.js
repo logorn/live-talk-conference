@@ -4,7 +4,7 @@ var path = require('path')
 module.exports = {
   development: {
     root: rootPath,
-    db: 'mongodb://localhost/noobjs_dev',
+    db: 'mongodb://localhost/talks',
     baseUrl: 'http://localhost:3000'
   },
   production: {
