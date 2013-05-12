@@ -3,10 +3,11 @@ extends layout
 block content
   h1= 'Welcome to this chatroom'
 
-  form#userForm
-    input#username(type='text')
-    a#submitName(href='#') Enter room
+  div(ng-controller='ChatCtrl')
+    form#registerForm
+      input#username(type='text', ng-model='username')
+      a(href='#', ng-click='register()') Enter room
 
-  div#chatContainer(style='display: none')
-    div
-    textarea#message(rows=10, cols=80)
+    div#chatContainer(style='display: none')
+      div
+      textarea(rows=10, cols=80, ng-model='message', ui-keypress="{enter: 'sendMessage()'}")

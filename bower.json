@@ -8,9 +8,10 @@
     "url": "git://github.com/mgonto/restangular.git"
   },
   "dependencies": {
-    "lodash": ">= 1.2.1",
+    "underscore": ">= 1.4.4",
     "angular-unstable": ">= 1.1.4",
-    "angular-resource-unstable": ">= 1.1.4"
+    "angular-resource-unstable": ">= 1.1.4",
+    "angular-ui-utils": ">= 0.0.2"
   },
   "ignore": [
     "node_modules",

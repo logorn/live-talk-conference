@@ -1,26 +1,24 @@
-$(document).ready(function() {
-    var socket = io.connect('http://localhost'),
-        username = $('#username')[0],
-        submitName = $('#submitName'),
-        userForm = $('#userForm');
-        chatContainer = $('#chatContainer'),
-        message = $('#message');
+angular.module('myApp', ['ui.keypress']);
 
-    submitName.on('click', function() {
-        socket.emit('register', {username: username.value});
-        userForm.hide();
-        chatContainer.show();
-    });
+angular.module('myApp').controller('ChatCtrl', ['$scope', function ($scope) {
 
-    message.on('keydown', function(e) {
-      debugger;
-      if (e.keyCode == 13) {
-        socket.emit('message', {message: message[0].value});
-        message[0].value = '';
-      }
-    });
+  var socket = io.connect('http://localhost'),
+      form = $('#registerForm');
+      chatContainer = $('#chatContainer');
 
-    socket.on('notify', function(m) {
-      chatContainer.children().first().append('<p>' + m.message + '</p>');
-    });
-});
+  socket.on('notify', function(m) {
+    chatContainer.children().first().append('<p>' + m.message + '</p>');
+  });
+
+  $scope.register = function() {
+    socket.emit('register', {username: $scope.username});
+    form.hide();
+    chatContainer.show();
+  };
+
+  $scope.sendMessage = function() {
+    console.log('ok');
+    socket.emit('message', {message: $scope.message});
+    $scope.message = null;
+  }
+}]);
