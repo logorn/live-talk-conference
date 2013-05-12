@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res) {
-  res.redirect('/talks');
+  res.redirect('/talks/new');
 };
