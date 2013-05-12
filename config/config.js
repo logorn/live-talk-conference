@@ -3,7 +3,9 @@ var path = require('path')
 
 module.exports = {
   development: {
-    root: rootPath
+    root: rootPath,
+    db: 'mongodb://localhost/noobjs_dev',
+    baseUrl: 'http://localhost:3000'
   },
   production: {
 
