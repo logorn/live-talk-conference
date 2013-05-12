@@ -4,8 +4,14 @@ block variables
 extends ../layout
 
 block content
-  form(method = "Post")
+  form(method = "Post", url="/talks")
     fieldset
-      legend __("talk.new")
+      legend New talk
       p
-        label(for="talk[name]") Talk name
+        label(for="talk[name]") name
+        input(type="text", name="talk[name]")
+      p
+        label(for="talk[url]") URL
+        input(type="text", name="talk[url]")
+      p.buttons
+        input(type="submit", value="Save")

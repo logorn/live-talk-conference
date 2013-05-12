@@ -12,7 +12,9 @@ module.exports = function (app, config) {
     locales:['en', 'es'],
 
     // you may alter a site wide default locale
-    defaultLocale: 'en'
+    defaultLocale: 'en',
+
+    directory: '../locales',
   });
 
   // all environments
@@ -26,6 +28,10 @@ module.exports = function (app, config) {
   app.use(app.router);
   app.use(express.static(path.join(config.root, 'public')));
   app.use(i18n.init);
+  console.log(i18n.getCatalog());
+  app.locals({
+    __: i18n.__
+  });
 
   // development only
   if ('development' == app.get('env')) {
