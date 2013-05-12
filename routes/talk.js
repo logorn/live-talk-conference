@@ -3,7 +3,7 @@ var mongoose = require('mongoose')
   , _ = require('underscore');
 
 exports.new = function(req, res){
-  res.render("talks/new", {errors: null})
+  res.render("talks/new", {errors: null, talk: null})
 };
 
 exports.show = function(req, res){
@@ -20,11 +20,11 @@ exports.show = function(req, res){
 exports.create = function(req, res) {
   var talk = new Talk();
   talk.massAssign(req.body);
-  talk.save(function(err) {
+  talk.save(function(err, savedTalk) {
     if (err) {
-      res.render("talks/new", {errors: err.errors});
+      res.render("talks/new", {errors: err.errors, talk: talk});
     } else {
-      res.send("/chat");
+      res.redirect("/talks/" + savedTalk.uuid);
     }
   });
 }
