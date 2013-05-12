@@ -4,4 +4,8 @@ block variables
 extends ../layout
 
 block content
-  p Welcome to To the jungle
+  form(method = "Post")
+    fieldset
+      legend __("talk.new")
+      p
+        label(for="talk[name]") Talk name
